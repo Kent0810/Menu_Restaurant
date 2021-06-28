@@ -32,17 +32,54 @@ body.active {
 body {
   color: var(--text-color);
   background: var(--bg-color);
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+  overflow-y: scroll;
+}
+body::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
 }
 #darkmode {
   font-size: 25px;
   cursor: pointer;
+}
+#cart {
+  cursor: pointer;
+}
+.cart-list.active {
+  animation: createBox 0.75s;
+  animation-fill-mode: forwards;
+}
+.cart-list {
+  animation: deleteBox 0.75s;
+  animation-fill-mode: forwards;
+}
+@keyframes createBox {
+  from {
+    visibility: visible;
+    transform: scale(0);
+  }
+  to {
+    visibility: visible;
+    transform: scale(1);
+  }
+}
+@keyframes deleteBox {
+  from {
+    visibility: visible;
+    transform: scale(1);
+  }
+  to {
+    visibility: visible;
+    transform: scale(0);
+  }
 }
 header {
   position: fixed;
   width: 100%;
   top: 0;
   right: 0;
-  z-index: 1000;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -57,6 +94,9 @@ header {
 }
 .navbar {
   display: flex;
+}
+.navbar > .cart {
+  padding-right: 20px;
 }
 .navbar a {
   font-size: 1rem;
@@ -127,12 +167,14 @@ header {
   color: var(--main-color);
   font-weight: 500;
 }
+
 .menu-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, auto));
   gap: 1.5rem;
   align-items: center;
 }
+
 .box {
   position: relative;
   margin-top: 2rem;
@@ -165,10 +207,12 @@ header {
 .box > span {
   font-size: var(--p-font);
 }
+
 .box .bx {
   position: absolute;
-  right: 0;
-  top: 0;
+  right: 15px;
+  top: 15px;
+  cursor: pointer;
 }
 .services > .heading {
   text-align: center;
@@ -260,7 +304,7 @@ header {
   }
   header > .navbar {
     position: absolute;
-    top: -400px;
+    top: -500px;
     left: 0;
     right: 0;
     display: flex;
@@ -277,6 +321,11 @@ header {
     padding: 1.5rem;
     display: block;
     background: var(--bg-color);
+  }
+  #cart {
+    position: absolute;
+    top: 1.4rem;
+    left: 2rem;
   }
   #darkmode {
     position: absolute;
@@ -318,4 +367,39 @@ header {
   .home-text {
     padding-top: 4rem;
   }
+}
+@media (min-width: 1200px) {
+  .menu-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(220px, auto));
+  }
+}
+.cart-list {
+  position: fixed;
+  top: 0;
+  width: 60vw;
+  height: 100vh;
+  background-color: var(--bg-color);
+  box-shadow: 0 0.5rem 50rem rgba(0, 0, 0, 0.1);
+  margin-left: 20%;
+  margin-right: 20%;
+  padding: 2rem;
+  z-index: 3;
+  border-radius: 2rem;
+  text-align: center;
+  visibility: hidden;
+}
+.cart-list > .close {
+  cursor: pointer;
+}
+.cart-list > h1 {
+  color: var(--main-color);
+}
+.cart-list > .close {
+  display: flex;
+  justify-content: flex-end;
+}
+hr {
+  margin-top: 20px;
+  border-top: 5px solid var(--text-color);
 }

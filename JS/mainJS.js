@@ -17,11 +17,19 @@ darkmode.onclick  =() =>{
     }
     else{
          darkmode.classList.replace('bx-sun','bx-moon');
-         document.body.classList.remove('active');
-
+         document.body.classList.remove('active');      
     }
 }
-
+//Cart
+let cart = document.querySelector('#cart');
+let cartlist = document.querySelector('#cart-list');
+cart.onclick = () =>{
+    cartlist.classList.toggle('active');
+}
+let x = document.querySelector('#close');
+x.onclick = () => {
+    cartlist.classList.toggle('active');
+}
 //Scroll Reveal
 
 const sr = ScrollReveal({
@@ -31,3 +39,5 @@ const sr = ScrollReveal({
     reset:true
 });
 sr.reveal('.home-text,.home-img,.about-img,.heading,.menu-container,.about-text,.services-container,.connect-text,.but,.footer-container',{interval:200 })
+
+
