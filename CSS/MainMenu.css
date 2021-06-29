@@ -17,7 +17,7 @@
   --main-color: #ffb411;
   --bg-color: #fff;
   --text-color: #1e1c2a;
-
+  --line-darkmode-color: #1e1c2a;
   --big-font: 4rem;
   --h2-font: 2.24rem;
   --p-font: 0.9rem;
@@ -28,6 +28,7 @@ section {
 body.active {
   --bg-color: #1e1c2a;
   --text-color: #fff;
+  --line-darkmode-color: #ffb411;
 }
 body {
   color: var(--text-color);
@@ -267,6 +268,10 @@ header {
 }
 .footer-container > .box1 > .icon > a {
   margin-right: 10px;
+  color: var(--text-color);
+}
+.footer-container > .box1 > .icon > a:hover {
+  color: var(--main-color);
 }
 .MenuLinkNav,
 .QuickLinkNav,
@@ -281,10 +286,14 @@ header {
 .QuickLinkNav a:hover {
   color: var(--main-color);
 }
+.ContactNav > i {
+  margin-bottom: 20px;
+}
 .ContactNav {
   display: flex;
   flex-direction: column;
 }
+
 @media (max-width: 921px) {
   header {
     padding: 14px 41px;
@@ -375,11 +384,11 @@ header {
   }
 }
 .cart-list {
-  position: fixed;
-  top: 0;
+  position: absolute;
   width: 60vw;
-  height: 100vh;
-  background-color: var(--bg-color);
+  height: 100%;
+  background-color: #fff;
+  color: #1e1c2a;
   box-shadow: 0 0.5rem 50rem rgba(0, 0, 0, 0.1);
   margin-left: 20%;
   margin-right: 20%;
@@ -388,6 +397,11 @@ header {
   border-radius: 2rem;
   text-align: center;
   visibility: hidden;
+  display: block;
+  overflow: auto;
+  /* Hide Scroll Bar */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
 }
 .cart-list > .close {
   cursor: pointer;
@@ -399,7 +413,26 @@ header {
   display: flex;
   justify-content: flex-end;
 }
+/* Hide Scroll Bar for Google Chrome */
+.cart-list::-webkit-scrollbar {
+  display: none;
+}
 hr {
   margin-top: 20px;
-  border-top: 5px solid var(--text-color);
+  border-top: 5px solid var(--line-darkmode-color);
+}
+.list-order-content {
+  margin-top: 150px;
+  height: 50vh;
+}
+.container-list {
+  display: block;
+  margin: 0 auto;
+}
+.list-order-total {
+  height: 50vh;
+}
+.cart-list > .list-order-content-container {
+  display: flex;
+  flex-direction: column;
 }

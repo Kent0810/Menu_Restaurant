@@ -25,11 +25,14 @@ let cart = document.querySelector('#cart');
 let cartlist = document.querySelector('#cart-list');
 cart.onclick = () =>{
     cartlist.classList.toggle('active');
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
 let x = document.querySelector('#close');
 x.onclick = () => {
     cartlist.classList.toggle('active');
 }
+
 //Scroll Reveal
 
 const sr = ScrollReveal({
